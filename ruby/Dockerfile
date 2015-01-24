@@ -17,9 +17,9 @@ RUN apt-get update && \
     apt-get clean
 
 # Ruby
-ADD ./ruby_version.txt /root/ruby_version.txt
+ADD ./version.txt /root/versions/ruby.txt
 ADD ./gemrc /root/.gemrc
-RUN RUBY_VERSION=$(cat /root/ruby_version.txt) && \
+RUN RUBY_VERSION=$(cat /root/versions/ruby.txt) && \
     RUBY_SHORT_VERSION=$(echo $RUBY_VERSION | sed -E "s/\.[0-9]+$//") && \
     curl -O http://ftp.ruby-lang.org/pub/ruby/$RUBY_SHORT_VERSION/ruby-$RUBY_VERSION.tar.gz && \
     tar -zxvf ruby-$RUBY_VERSION.tar.gz && \
